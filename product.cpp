@@ -1,6 +1,6 @@
 #include "product.h"
 
-QString Product::getName() const
+const QString& Product::getName() const
 {
     return name;
 }
@@ -20,7 +20,7 @@ void Product::setCategory(const QString &value)
     category = value;
 }
 
-int Product::getPrice() const
+float Product::getPrice() const
 {
     return price;
 }
@@ -30,10 +30,24 @@ void Product::setPrice(int value)
     price = value;
 }
 
+int Product::getUniqId()
+{
+    return uniqId;
+}
+
 Product::Product()
 {
     Product::id++;
     uniqId=id;
+
+}
+Product::Product(const QString &name, const QString &category, float price)
+{
+    Product::id++;
+    uniqId=id;
+    this->name=name;
+    this->category=category;
+    this->price=price;
 
 }
 

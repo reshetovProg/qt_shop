@@ -19,6 +19,7 @@ public:
 
 private slots:
     void on_addPosition_btn_clicked();
+    void updateLists();
 
 
 private:

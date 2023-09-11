@@ -9,16 +9,19 @@ private:
     int uniqId;
     QString name;
     QString category;
-    int price;
+    float price;
 
 public:
-    Product();  
-    QString getName() const;
+    Product();
+    Product(const QString &name, const QString &category, float price);
+    const QString& getName() const;
     void setName(const QString &value);
     QString getCategory() const;
     void setCategory(const QString &value);
-    int getPrice() const;
+    float getPrice() const;
     void setPrice(int value);
+    int getUniqId();
+
 };
 
 #endif // PRODUCT_H
