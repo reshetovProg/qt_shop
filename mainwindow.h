@@ -20,11 +20,24 @@ public:
 private slots:
     void on_addPosition_btn_clicked();
     void updateLists();
+    void updateTable();
 
+
+
+    void on_addProduct_category_currentIndexChanged(const QString &arg1);
+
+    void on_addProduct_category_activated(const QString &arg1);
+
+    void on_addProduct_category_currentTextChanged(const QString &arg1);
+
+    void on_removeProduct_category_currentTextChanged(const QString &arg1);
+
+    void on_filter_category_currentTextChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
     QMap <QString, int> productsName;
+    QMap <QString, int> productsUniqName;
     QSet <QString> categoriesName;
     QMap <int, Product> products;
 

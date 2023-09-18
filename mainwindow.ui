@@ -683,16 +683,6 @@
       <string>Вывести товар</string>
      </property>
     </widget>
-    <widget class="QTableView" name="table">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>230</y>
-       <width>1101</width>
-       <height>481</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_21">
      <property name="geometry">
       <rect>
@@ -803,6 +793,16 @@
      </property>
      <property name="text">
       <string>Название</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="table">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>230</y>
+       <width>771</width>
+       <height>461</height>
+      </rect>
      </property>
     </widget>
    </widget>
