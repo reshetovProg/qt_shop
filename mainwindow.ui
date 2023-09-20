@@ -448,7 +448,7 @@
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="romoveProduct_count">
+    <widget class="QTextEdit" name="removeProduct_count">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -509,7 +509,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QFrame" name="frame_2">
+   <widget class="QFrame" name="saleBtn">
     <property name="geometry">
      <rect>
       <x>540</x>
@@ -704,46 +704,10 @@
       <string>Процессы</string>
      </property>
     </widget>
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>770</y>
-       <width>651</width>
-       <height>251</height>
-      </rect>
-     </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>649</width>
-        <height>249</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
     <widget class="QComboBox" name="filter_category">
      <property name="geometry">
       <rect>
        <x>230</x>
-       <y>160</y>
-       <width>201</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="filter_name">
-     <property name="geometry">
-      <rect>
-       <x>670</x>
        <y>160</y>
        <width>201</width>
        <height>31</height>
@@ -774,27 +738,6 @@
       <string>Категория</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_23">
-     <property name="geometry">
-      <rect>
-       <x>540</x>
-       <y>170</y>
-       <width>81</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(53, 53, 53);</string>
-     </property>
-     <property name="text">
-      <string>Название</string>
-     </property>
-    </widget>
     <widget class="QTableWidget" name="table">
      <property name="geometry">
       <rect>
@@ -802,6 +745,37 @@
        <y>230</y>
        <width>771</width>
        <height>461</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="addPosition_btn_2">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>160</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(18, 18, 18);</string>
+     </property>
+     <property name="text">
+      <string>Продать</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidget">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>770</y>
+       <width>651</width>
+       <height>251</height>
       </rect>
      </property>
     </widget>

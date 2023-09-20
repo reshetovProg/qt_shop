@@ -34,6 +34,13 @@ private slots:
 
     void on_filter_category_currentTextChanged(const QString &arg1);
 
+    void on_addProduct_btn_clicked();
+
+
+    void on_removeProduct_btn_clicked();
+
+    void on_addPosition_btn_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMap <QString, int> productsName;

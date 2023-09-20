@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     categoriesName.insert("овощи");
     categoriesName.insert("фрукты");
     categoriesName.insert("напитки");
+    ui->filter_category->addItem("-");
 
     for (auto el: this->categoriesName){
         ui->addPosition_category->addItem(el);
@@ -28,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->table->setHorizontalHeaderItem(1,item2);
     ui->table->setHorizontalHeaderItem(2,item3);
     ui->table->setHorizontalHeaderItem(3,item4);
+    ui->table->horizontalHeader()->resizeSections(QHeaderView::Stretch);
+
+
 
 
 }
@@ -68,8 +72,8 @@ void MainWindow::updateLists()
      ui->filter_category->clear();
      ui->addProduct_name->clear();
      ui->removeProduct_name->clear();
-     ui->filter_name->clear();
 
+    ui->filter_category->addItem("-");
     for (auto el: this->categoriesName){
         ui->addPosition_category->addItem(el);
         ui->addProduct_category->addItem(el);
@@ -96,22 +100,25 @@ void MainWindow::updateTable()
 
     int a=0;
     for(auto el:this->productsName.keys()){
+        if(ui->filter_category->currentText()=="-" || ui->filter_category->currentText()== products.value(productsUniqName.value(el)).getCategory()){
+            QTableWidgetItem* count = new QTableWidgetItem(QString::number(productsName.value(el)));
+            QTableWidgetItem* name = new QTableWidgetItem(products.value(productsUniqName.value(el)).getName());
+            QTableWidgetItem* category = new QTableWidgetItem(products.value(productsUniqName.value(el)).getCategory());
+            float price = products.value(productsUniqName.value(el)).getPrice();
+            QTableWidgetItem* priceStr= new QTableWidgetItem(QString::number(price));
 
-        QTableWidgetItem* count = new QTableWidgetItem(QString::number(productsName.value(el)));
-        QTableWidgetItem* name = new QTableWidgetItem(products.value(productsUniqName.value(el)).getName());
-        QTableWidgetItem* category = new QTableWidgetItem(products.value(productsUniqName.value(el)).getCategory());
-        float price = products.value(productsUniqName.value(el)).getPrice();
-        QTableWidgetItem* priceStr= new QTableWidgetItem(QString::number(price));
+
+            ui->table->insertRow(a);
+
+            ui->table->setItem(a,3, count);
+            ui->table->setItem(a,0, name);
+            ui->table->setItem(a,1, category);
+            ui->table->setItem(a,2, priceStr);
+
+            a++;
+        }
 
 
-        ui->table->insertRow(a);
-
-        ui->table->setItem(a,3, count);
-        ui->table->setItem(a,0, name);
-        ui->table->setItem(a,1, category);
-        ui->table->setItem(a,2, priceStr);
-
-        a++;
 
     }
 
@@ -131,6 +138,9 @@ void MainWindow::on_addProduct_category_currentTextChanged(const QString &arg1)
        if(products.value(productsUniqName.value(el)).getCategory()
                ==arg1)ui->addProduct_name->addItem(el);
    }
+
+
+
 }
 
 void MainWindow::on_removeProduct_category_currentTextChanged(const QString &arg1)
@@ -147,11 +157,51 @@ void MainWindow::on_removeProduct_category_currentTextChanged(const QString &arg
 
 void MainWindow::on_filter_category_currentTextChanged(const QString &arg1)
 {
-    ui->filter_name->clear();
+    updateTable();
+}
+
+void MainWindow::on_addProduct_btn_clicked()
+{
+    QString name = ui->addProduct_name->currentText();
+    QString category = ui->addProduct_category->currentText();
+    int count = ui->addProduct_count->toPlainText().toInt();
+
+    productsName[name]+=count;
+
+    updateLists();
+    updateTable();
+
+    ui->listWidget->addItem(name+" : "+category+" : "+QString::number(count)+" - куплено");
 
 
-    for (auto el : this->productsUniqName.keys()){
-        if(products.value(productsUniqName.value(el)).getCategory()
-                ==arg1)ui->filter_name->addItem(el);
+}
+
+
+
+void MainWindow::on_removeProduct_btn_clicked()
+{
+    QString name = ui->removeProduct_name->currentText();
+    QString category = ui->removeProduct_category->currentText();
+    int count = ui->removeProduct_count->toPlainText().toInt();
+
+    if(count<=productsName.value(name)){
+        productsName[name]-=count;
     }
+
+    updateLists();
+    updateTable();
+}
+
+void MainWindow::on_addPosition_btn_2_clicked()
+{
+    if (ui->table->rowCount()>0 && ui->table->currentRow()>=0){
+        int num = ui->table->currentRow();
+        QTableWidgetItem* name = ui->table->takeItem(num,0);
+        if(productsName[name->text()]>0 ){
+            productsName[name->text()]-=1;
+        }
+    }
+
+
+    updateTable();
 }
